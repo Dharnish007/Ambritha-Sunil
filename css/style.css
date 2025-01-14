@@ -9541,7 +9541,7 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 .section-title {
-  margin-bottom: 30px;
+  margin-bottom: -3px;
 }
 
 .section-title::before {
