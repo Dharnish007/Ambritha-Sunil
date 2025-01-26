@@ -27,9 +27,62 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <!-- <link href="css/style.css" rel="stylesheet"> -->
+     <!-- Preloader CSS -->
+    <style>
+        /* Preloader Background */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #aad6ec; /* Match the theme color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Spinner Animation */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #007bff; /* Accent color */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Spinner Animation Keyframes */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Fade-in Effect for the Body */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="51">
+
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+    <!-- Preloader End -->
+
     <!-- Navbar Start -->
     <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
         <a href="index.html" class="navbar-brand d-block d-lg-none">
@@ -267,8 +320,8 @@
                     <div class="position-relative mb-2">
                         <img class="img-fluid w-100" src="img/bridesmaid-1.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3"> Anand & Mamatha</h4>
-                            <p class="text-uppercase"> parents of the Bride</p>
+                            <h4 class="mb-3"> Ananda & Mamatha </h4>
+                            <p class="text-uppercase"> parents</p>
                         </div>
                     </div>
                 </div>
@@ -276,8 +329,8 @@
                     <div class="position-relative mb-2">
                         <img class="img-fluid w-100" src="img/groomsmen-1.jpg" alt=""> <!-- 680 x 512 -->
                         <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3"> C.H HULIYAPPA & H.R HEMALATHA</h4>
-                            <p class="text-uppercase"> parents of the Groom</p>
+                            <h4 class="mb-3"> HULIYAPPA & HEMALATHA</h4>
+                            <p class="text-uppercase"> parents</p>
                         </div>
                     </div>
                 </div>
@@ -285,8 +338,8 @@
                     <div class="position-relative mb-2">
                         <img class="img-fluid w-100" src="img/bridesmaid-2.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3"> Arpitha B A</h4>
-                            <p class="text-uppercase"> Sister of the Bride</p>
+                            <h4 class="mb-3"> Arpitha </h4>
+                            <p class="text-uppercase"> Sister</p>
                         </div>
                     </div>
                 </div>
@@ -294,8 +347,8 @@
                     <div class="position-relative mb-2">
                         <img class="img-fluid w-100" src="img/groomsmen-2.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
-                            <h4 class="mb-3"> C.H Sangeetha </h4>
-                            <p class="text-uppercase"> Sister of the Groom</p>
+                            <h4 class="mb-3"> Sangeetha </h4>
+                            <p class="text-uppercase"> Sister</p>
                         </div>
                     </div>
                 </div>
@@ -304,7 +357,7 @@
                         <img class="img-fluid w-100" src="img/bridesmaid-3.jpg" alt="">
                         <div class="bg-secondary text-center p-4">
                             <h4 class="mb-3"> Vignesh </h4>
-                            <p class="text-uppercase"> Brother of the Bride</p>
+                            <p class="text-uppercase"> Brother</p>
                         </div>
                     </div>
                 </div>
@@ -352,7 +405,20 @@
     <script src="lib/isotope/isotope.pkgd.min.js"></script>
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
-    <!-- Template Javascript -->
+    <!-- Javascript -->
+
+    <!-- Preloader JS -->
+    <script>
+        // Wait for the page to fully load
+        window.addEventListener('load', function () {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0'; // Fade out
+            setTimeout(() => {
+                preloader.style.display = 'none'; // Remove from view
+                document.body.classList.add('loaded'); // Add fade-in effect for the body
+            }, 500); // Wait for the fade-out animation (0.5s)
+        });
+    </script>
 
     <script>
         // Function to dynamically load a CSS file
